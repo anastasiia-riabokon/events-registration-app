@@ -1,10 +1,14 @@
-import EventCard from "../EventCard.jsx/EventCard";
+import EventCard from "../EventCard/EventCard";
 
-const EventList = () => {
+const EventList = ({events}) => {
   return (
-    <div>
-      <EventCard />
-    </div>
+    <ul className="flex flex-wrap gap-2">
+      {events?.map((event) => (
+        <li key={event._id} className="w-[394px]">
+          <EventCard event={event} />
+        </li>
+      ))}
+    </ul>
   );
 };
 export default EventList;
