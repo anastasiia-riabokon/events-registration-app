@@ -29,7 +29,7 @@ const RegisterPage = () => {
       dateBirth: data.dateBirth,
       source: data.source,
     };
-    console.log(newParticipant);
+
     dispatch(postNewParticipant(newParticipant));
 
     reset();
