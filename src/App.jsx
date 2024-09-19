@@ -7,10 +7,10 @@ import Layout from "./components/Layout/Layout";
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<Layout />}>
-        <Route path="/events" element={<EventsPage />} />
-        <Route path="/participants" element={<ParticipantPage />} />
-        <Route path="/register" element={<RegisterPage />} />
+      <Route path="/events" element={<Layout />}>
+        <Route index element={<EventsPage />} />
+        <Route path="/events/:id/participants" element={<ParticipantPage />} />
+        <Route path="/events/:id/register" element={<RegisterPage />} />
       </Route>
       <Route path="*" element={<Navigate to="/events" replace />} />
     </Routes>
