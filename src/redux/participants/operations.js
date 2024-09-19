@@ -1,5 +1,6 @@
 import {createAsyncThunk} from "@reduxjs/toolkit";
 import {myApi} from "../../config/myApi";
+import toast from "react-hot-toast";
 
 export const getAllParticipants = createAsyncThunk("participants/getAll", async (id, thunkApi) => {
   try {
@@ -27,6 +28,7 @@ export const postNewParticipant = createAsyncThunk("participants/add", async (pa
   const {id, ...body} = params;
   try {
     const {data} = await myApi.post(`/participants/${id}`, body);
+    toast.success("Participant successfully added!");
     return data;
   } catch (error) {
     throw thunkApi.rejectWithValue(error.message);

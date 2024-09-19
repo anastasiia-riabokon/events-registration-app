@@ -2,7 +2,7 @@ import {format} from "date-fns";
 import {Link} from "react-router-dom";
 
 const EventCard = ({event}) => {
-  const {title, description, eventDate, organizer} = event;
+  const {title, description, eventDate, organizer, _id} = event;
   return (
     <>
       <h3>{title}</h3>
@@ -10,11 +10,11 @@ const EventCard = ({event}) => {
       <p>{format(eventDate, "dd MMMM yyyy")}</p>
       <p>{organizer}</p>
       <span>
-        <Link to="/register" className="btn">
+        <Link to={`/events/${_id}/register`} className="btn">
           Registration
         </Link>
 
-        <Link to="/participants" className="btn">
+        <Link to={`/events/${_id}/participants`} className="btn">
           View
         </Link>
       </span>
