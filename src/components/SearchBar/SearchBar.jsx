@@ -1,6 +1,7 @@
 import {useForm} from "react-hook-form";
 import {yupResolver} from "@hookform/resolvers/yup";
 import {schemaSearch} from "../../helpers/validateForm";
+import Button from "../Button/Button";
 
 const SearchBar = ({onSearch}) => {
   const {
@@ -17,20 +18,30 @@ const SearchBar = ({onSearch}) => {
     reset();
   };
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <label>
+    <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-[20px] w-[250px]">
+      <label className="group_labelField">
         <span>Full name</span>
-        <input placeholder="Enter full name" type="text" {...register("fullName")} />
-        {errors.fullName && <p>{errors.fullName.message}</p>}
+        <input
+          placeholder="Enter full name"
+          type="text"
+          {...register("fullName")}
+          className="field"
+        />
+        {errors.fullName && <p className="error_text">{errors.fullName.message}</p>}
       </label>
 
-      <label>
+      <label className="group_labelField">
         <span>Email</span>
-        <input placeholder="Enter email participant" type="text" {...register("email")} />
-        {errors.email && <p>{errors.email.message}</p>}
+        <input
+          placeholder="Enter email participant"
+          type="text"
+          {...register("email")}
+          className="field"
+        />
+        {errors.email && <p className="error_text">{errors.email.message}</p>}
       </label>
 
-      <button type="submit">Search</button>
+      <Button>Search</Button>
     </form>
   );
 };

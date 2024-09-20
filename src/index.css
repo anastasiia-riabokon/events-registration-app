@@ -24,8 +24,14 @@
   font-weight: 700;
 }
 
+@font-face {
+  font-family: "Sacramento";
+  src: url("/src/fonts/Sacramento-Regular.ttf");
+  font-weight: 400;
+}
+
 body {
-  @apply font-raleway bg-[f1f1f1];
+  @apply font-raleway bg-[#f1f1f1];
 }
 
 button {
@@ -61,4 +67,24 @@ button:disabled {
 
 .event_link {
   @apply btn btn-sm btn-outline text-[12px];
+}
+
+.goBack_link {
+  @apply flex gap-[4px] items-center absolute top-[16px];
+}
+
+.notice::after {
+  content: "";
+  width: 100%;
+  border-bottom: 1px solid gray;
+}
+
+.field {
+  @apply input input-bordered w-full;
+}
+
+.group_labelField {
+}
+
+.error_text {
 }

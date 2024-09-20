@@ -1,6 +1,7 @@
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect, useState} from "react";
-import {Link, useLocation, useParams} from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
+import {FaArrowLeft} from "react-icons/fa6";
 import ParticipantList from "../../components/ParticipantList/ParticipantList";
 import {getAllParticipants, getFilterParticipants} from "../../redux/participants/operations";
 import {
@@ -10,6 +11,8 @@ import {
 } from "../../redux/participants/selectors";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import Notification from "../../components/Notification/Notification";
+import Loader from "../../components/Loader/Loader";
+import Title from "../../components/Title/Title";
 
 const ParticipantPage = () => {
   const dispatch = useDispatch();
@@ -28,20 +31,28 @@ const ParticipantPage = () => {
     dispatch(getFilterParticipants({id, fullName, email}));
   };
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <Loader />;
 
   return (
     <div>
-      <Link to="/events">Go Back</Link>
-      <h2>"Awesome Event" participants</h2>
-      <SearchBar onSearch={handleSearch} />
-      {participants.length === 0 && (
-        <Notification text={"There are no participants for this event yet"} />
-      )}
-      {filter.length === 0 && participants.length !== 0 && isSearch && (
-        <Notification text={"No participant found with this name or email"} />
-      )}
-      <ParticipantList items={filter.length ? filter : participants} />
+      <Link to="/events" className="goBack_link">
+        <FaArrowLeft />
+        Go Back
+      </Link>
+      <Title text={"'Awesome Event' participants"} />
+
+      <div className="flex gap-[20px]">
+        <SearchBar onSearch={handleSearch} />
+        <div className="flex flex-col">
+          {filter.length === 0 && participants.length !== 0 && isSearch && (
+            <Notification text={"No participant found with this name or email"} />
+          )}
+          <ParticipantList items={filter.length ? filter : participants} />
+          {participants.length === 0 && (
+            <Notification text={"There are no participants for this event yet"} />
+          )}
+        </div>
+      </div>
     </div>
   );
 };
