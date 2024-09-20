@@ -1,11 +1,14 @@
 import {useForm} from "react-hook-form";
 import {yupResolver} from "@hookform/resolvers/yup";
 import {useDispatch} from "react-redux";
+import {FaArrowLeft} from "react-icons/fa6";
 
 import {postNewParticipant} from "../../redux/participants/operations";
 import {schemaRegister} from "../../helpers/validateForm";
 import Form from "../../components/Form/Form";
 import {Link, useParams} from "react-router-dom";
+import Button from "../../components/Button/Button";
+import Title from "../../components/Title/Title";
 
 const RegisterPage = () => {
   const {id} = useParams();
@@ -14,7 +17,9 @@ const RegisterPage = () => {
     register,
     handleSubmit,
     formState: {errors},
+
     reset,
+    control,
   } = useForm({
     resolver: yupResolver(schemaRegister),
   });
@@ -36,9 +41,15 @@ const RegisterPage = () => {
   };
   return (
     <div>
-      <Link to="/events">Go Back</Link>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <h2>Event Registration</h2>
+      <Link to="/events" className="goBack_link">
+        <FaArrowLeft />
+        Go Back
+      </Link>
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="w-[450px] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+      >
+        <Title text={"Event Registration"} />
         <Form
           errors={errors}
           fields={[
@@ -56,6 +67,7 @@ const RegisterPage = () => {
               label: "Date of birth",
               type: "date",
               register: register("dateBirth"),
+              control,
             },
             {
               label: ["Social media", "Friends", "Found myself"],
@@ -64,7 +76,7 @@ const RegisterPage = () => {
             },
           ]}
         />
-        <button type="submit">Register</button>
+        <Button>Register</Button>
       </form>
     </div>
   );

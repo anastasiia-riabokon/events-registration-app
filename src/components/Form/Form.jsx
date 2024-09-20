@@ -2,7 +2,7 @@ import Field from "../Field/Field";
 
 const Form = ({fields, errors}) => {
   return (
-    <ul>
+    <ul className="flex flex-col gap-[24px] mb-[32px]">
       {fields.map((field, i) => (
         <li key={i}>
           <Field
@@ -10,9 +10,10 @@ const Form = ({fields, errors}) => {
             type={field.type}
             register={field.register}
             error={errors[field.register.name]}
+            control={field.control}
           />
           {errors[field.register.name] && (
-            <p className="error">{errors[field.register.name].message}</p>
+            <p className="error_text">{errors[field.register.name].message}</p>
           )}
         </li>
       ))}
