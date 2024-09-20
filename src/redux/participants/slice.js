@@ -5,6 +5,7 @@ const initialState = {
   items: [],
   isLoading: false,
   errorMessage: null,
+  filter: [],
 };
 
 const sliceParticipants = createSlice({
@@ -16,7 +17,7 @@ const sliceParticipants = createSlice({
         state.items = action.payload;
       })
       .addCase(getFilterParticipants.fulfilled, (state, action) => {
-        state.items = action.payload;
+        state.filter = action.payload;
       })
 
       .addMatcher(

@@ -1,4 +1,9 @@
-const ParticipantCard = () => {
-  return <div></div>;
+const ParticipantCard = ({participant}) => {
+  return (
+    <>
+      <p>{participant.fullName}</p>
+      <p>{participant.email}</p>
+    </>
+  );
 };
 export default ParticipantCard;

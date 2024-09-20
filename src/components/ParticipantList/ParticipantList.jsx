@@ -1,10 +1,14 @@
 import ParticipantCard from "../ParticipantCard/ParticipantCard";
 
-const ParticipantList = () => {
+const ParticipantList = ({items}) => {
   return (
-    <div>
-      <ParticipantCard />
-    </div>
+    <ul>
+      {items.map((item) => (
+        <li key={item._id}>
+          <ParticipantCard participant={item} />
+        </li>
+      ))}
+    </ul>
   );
 };
 export default ParticipantList;
