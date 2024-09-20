@@ -2,6 +2,32 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: "Raleway";
+  src: url("/src/fonts/Raleway-Regular.ttf");
+  font-weight: 400;
+}
+@font-face {
+  font-family: "Raleway";
+  src: url("/src/fonts/Raleway-Bold.ttf");
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: "GowunBatang";
+  src: url("/src/fonts/GowunBatang-Regular.ttf");
+  font-weight: 400;
+}
+@font-face {
+  font-family: "GowunBatang";
+  src: url("/src/fonts/GowunBatang-Bold.ttf");
+  font-weight: 700;
+}
+
+body {
+  @apply font-raleway;
+}
+
 button:disabled {
   cursor: not-allowed;
 }
