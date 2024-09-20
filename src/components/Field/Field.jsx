@@ -1,3 +1,8 @@
+import {useState} from "react";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.min.css";
+import {MdOutlineEditCalendar} from "react-icons/md";
+
 const Field = ({type, label, register, error}) => {
   if (type === "radio") {
     return (
@@ -11,6 +16,29 @@ const Field = ({type, label, register, error}) => {
           </li>
         ))}
       </ul>
+    );
+  }
+
+  const [date, setDate] = useState(new Date());
+
+  if (type === "date") {
+    return (
+      <label>
+        <span>{label}</span>
+        <DatePicker
+          showIcon
+          icon={<MdOutlineEditCalendar />}
+          selected={date}
+          onChange={(date) => setDate(date)}
+          minDate={new Date(1970, 0, 1)}
+          maxDate={new Date()}
+          dateFormat={"dd.mm.yyyy"}
+          peekNextMonth
+          showMonthDropdown
+          showYearDropdown
+          dropdownMode="select"
+        />
+      </label>
     );
   }
   return (
