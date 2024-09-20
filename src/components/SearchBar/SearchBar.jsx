@@ -18,8 +18,8 @@ const SearchBar = ({onSearch}) => {
     reset();
   };
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-[20px] w-[250px]">
-      <label className="group_labelField">
+    <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-[24px] w-[250px]">
+      <label>
         <span>Full name</span>
         <input
           placeholder="Enter full name"
@@ -30,7 +30,7 @@ const SearchBar = ({onSearch}) => {
         {errors.fullName && <p className="error_text">{errors.fullName.message}</p>}
       </label>
 
-      <label className="group_labelField">
+      <label>
         <span>Email</span>
         <input
           placeholder="Enter email participant"
