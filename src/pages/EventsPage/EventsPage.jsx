@@ -6,6 +6,8 @@ import {FaArrowLeft} from "react-icons/fa6";
 import EventList from "../../components/EventList/EventList";
 import {getAllEvents} from "../../redux/events/operations";
 import {selectEvents, selectIsLoading} from "../../redux/events/selectors";
+import Title from "../../components/Title/Title";
+import Loader from "../../components/Loader/Loader";
 
 const EventsPage = () => {
   const dispatch = useDispatch();
@@ -19,7 +21,7 @@ const EventsPage = () => {
     setSearchParams({page});
   }, [dispatch, page]);
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <Loader />;
 
   const handleNextClick = () => {
     page < events.totalPages && setPage((prev) => prev + 1);
@@ -29,21 +31,33 @@ const EventsPage = () => {
   };
 
   return (
-    <div>
-      <h2>Events</h2>
+    <>
+      <Title text={"Events"} />
       <EventList events={events.result} />
-      <div>
-        <button type="button" onClick={handlePrevClick} disabled={page <= 1}>
-          <FaArrowLeft />
-        </button>
-        <button type="button" onClick={handleNextClick} disabled={page >= events.totalPages}>
-          <FaArrowRight />
-        </button>
+      <div className="flex flex-col items-center">
+        <div className="mb-[4px]">
+          <button
+            type="button"
+            onClick={handlePrevClick}
+            disabled={page <= 1}
+            className="arrow_btn mr-[18px]"
+          >
+            <FaArrowLeft />
+          </button>
+          <button
+            type="button"
+            onClick={handleNextClick}
+            disabled={page >= events.totalPages}
+            className="arrow_btn"
+          >
+            <FaArrowRight />
+          </button>
+        </div>
+        <p className="font-gown">
+          {page} of {events.totalPages}
+        </p>
       </div>
-      <p>
-        {page} of {events.totalPages}
-      </p>
-    </div>
+    </>
   );
 };
 export default EventsPage;
