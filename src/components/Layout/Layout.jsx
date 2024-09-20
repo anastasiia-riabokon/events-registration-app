@@ -1,10 +1,14 @@
 import {Outlet} from "react-router-dom";
+import Section from "./Section";
+import Container from "./Container";
 
 const Layout = () => {
   return (
-    <div>
-      <Outlet />
-    </div>
+    <Section>
+      <Container>
+        <Outlet />
+      </Container>
+    </Section>
   );
 };
 export default Layout;
