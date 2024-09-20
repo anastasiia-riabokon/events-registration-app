@@ -1,6 +1,6 @@
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect, useState} from "react";
-import {useParams} from "react-router-dom";
+import {Link, useLocation, useParams} from "react-router-dom";
 import ParticipantList from "../../components/ParticipantList/ParticipantList";
 import {getAllParticipants, getFilterParticipants} from "../../redux/participants/operations";
 import {
@@ -32,6 +32,7 @@ const ParticipantPage = () => {
 
   return (
     <div>
+      <Link to="/events">Go Back</Link>
       <h2>"Awesome Event" participants</h2>
       <SearchBar onSearch={handleSearch} />
       {participants.length === 0 && (
