@@ -31,7 +31,7 @@ const Field = ({type, label, register, control}) => {
           render={({field}) => (
             <DatePicker
               onChange={(date) => field.onChange(date)}
-              className="field hover:outline-none hover:bg-transparent focus-within:bg-transparent"
+              className="field hover:outline-none hover:bg-transparent hover:border-[#c5c5c5] focus-within:bg-transparent"
               style={{fontFamily: "Raleway", fontSize: "16px"}}
               format={{
                 format: "YYYY-MM-DD",
