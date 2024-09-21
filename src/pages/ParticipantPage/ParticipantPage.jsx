@@ -43,7 +43,7 @@ const ParticipantPage = () => {
 
       <div className="flex gap-[20px]">
         <SearchBar onSearch={handleSearch} />
-        <div className="flex flex-col">
+        <div className="flex flex-col w-full">
           {filter.length === 0 && participants.length !== 0 && isSearch && (
             <Notification text={"No participant found with this name or email"} />
           )}
