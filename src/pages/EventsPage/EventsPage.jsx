@@ -15,11 +15,13 @@ const EventsPage = () => {
   const isLoading = useSelector(selectIsLoading);
   const [searchParams, setSearchParams] = useSearchParams();
   const [page, setPage] = useState(Number(searchParams.get("page")) || 1);
+  const [limit, setLimit] = useState(Number(searchParams.get("limit")) || 12);
 
   useEffect(() => {
-    dispatch(getAllEvents({page}));
-    setSearchParams({page});
-  }, [dispatch, page]);
+    setSearchParams({page, limit});
+    dispatch(getAllEvents({page, limit}));
+    setLimit(limit);
+  }, [dispatch, page, limit]);
 
   if (isLoading) return <Loader />;
 
